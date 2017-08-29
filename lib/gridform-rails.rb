@@ -1,8 +1,11 @@
 require "gridforms/rails/version"
-require "gridforms/rails/engine"
 
 module Gridforms
   module Rails
-    # Your code goes here...
+    class Engine < Rails::Engine
+      initializer "gridforms-rails" do |app|
+        app.config.assets.precompile += %w(gridforms.js gridforms.css gridforms.css.map gridforms.sass)
+      end
+    end
   end
 end
